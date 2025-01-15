@@ -50,13 +50,15 @@ fun MainScreen() {
             ) {
                 UserInput(
                     name = username,
-                    onNameChange = { username = it }
+                    onNameChange = { username = it
+                                     showGreeting = false
+                    }
                 )
 
                 Button(
                     onClick = {
                         if (username.isNotBlank()) {
-                            showGreeting = false
+                            showGreeting = true
                         }
                     },
                     modifier = Modifier
@@ -88,7 +90,7 @@ fun UserInput(name: String, onNameChange: (String) -> Unit, modifier: Modifier =
         label = { Text("Enter your Name") },
         modifier = modifier
             .fillMaxWidth()
-            .testTag("UserInput")
+            .testTag("nameInput")
     )
 }
 
@@ -98,7 +100,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!, Welcome to InF2007!",
         modifier = Modifier
             .fillMaxWidth()
-            .testTag("greeting")
+            .testTag("greetingMessage")
     )
 }
 
